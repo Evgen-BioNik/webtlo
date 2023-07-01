@@ -908,6 +908,7 @@ function automation_checkbox($cfg, $option)
                         <li class="menu"><a href="#log_reports" class="menu log_file">reports</a></li>
                         <li class="menu"><a href="#log_control" class="menu log_file">control</a></li>
                         <li class="menu"><a href="#log_seeders" class="menu log_file">seeders</a></li>
+                        <li class="menu"><a href="#log_rename" class="menu log_file">rename</a></li>
                     </ul>
                     <div id="log_content">
                         <div id="log"></div>
@@ -916,6 +917,7 @@ function automation_checkbox($cfg, $option)
                         <div id="log_reports"></div>
                         <div id="log_control"></div>
                         <div id="log_seeders"></div>
+                        <div id="log_rename"></div>
                     </div>
                 </div>
             </div>
