@@ -202,6 +202,21 @@ class Qbittorrent extends TorrentClient
         return $properties;
     }
 
+    public function getAllTags()
+    {
+        return $this->makeRequest('api/v2/torrents/tags');
+    }
+
+    public function addTags($torrentHashes, $tags)
+    {
+        $data = [
+            'hashes' => implode('|', array_map('strtolower', $torrentHashes)),
+            'tags' => implode(',',$tags)
+        ];
+        $fields = http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+        return $this->makeRequest('api/v2/torrents/addTags', $fields );
+    }
+
     public function addTorrent($torrentFilePath, $savePath = '')
     {
         if (version_compare(PHP_VERSION, '5.5.0') >= 0) {
@@ -284,6 +299,20 @@ class Qbittorrent extends TorrentClient
     {
         $fields = array('hashes' => implode('|', array_map('strtolower', $torrentHashes)));
         return $this->makeRequest('api/v2/torrents/pause', $fields);
+    }
+
+    public function moveTorrent( $torrentHash, $location )
+    {
+        $data = ['hashes' => strtolower($torrentHash), 'location' => $location];
+        $fields = http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+        return $this->makeRequest('api/v2/torrents/setLocation', $fields );
+    }
+
+    public function renameTorrent( $torrentHash, $name )
+    {
+        $data = ['hash' => strtolower($torrentHash), 'name' => $name];
+        $fields = http_build_query($data, '', '&', PHP_QUERY_RFC3986);
+        return $this->makeRequest('api/v2/torrents/rename', $fields );
     }
 
     public function removeTorrents($torrentHashes, $deleteFiles = false)
