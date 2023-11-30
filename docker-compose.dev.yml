@@ -17,6 +17,7 @@ services:
       - ./webtlo-data-dev:/data
       # Проброшенный каталог WebTlo
       - ./src:/var/www/webtlo
+      - ./:/var/www/fixer
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -26,7 +27,7 @@ services:
       - WEBTLO_UID=1000
       - WEBTLO_GID=1000
       # Выполняемые внутри контейнера фоновые задачи планировщика
-      - WEBTLO_CRON=true # false - чтобы отключить планировщик
+      - WEBTLO_CRON=false # false - чтобы отключить планировщик
       # Задать расписание для конкретной задачи. false - чтобы выключить
       - CRON_UPDATE=15 * * * *
       - CRON_CONTROL=25 * * * *
