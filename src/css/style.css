@@ -209,9 +209,14 @@ li.menu.ui-tabs-active {
     margin: 0;
 }
 
+.ui-controlgroup.columns .ui-button {
+    /*width: 4em;*/
+    padding: 0.2em;
+}
+
 .ui-controlgroup.lesser-button .ui-button {
-    padding: 0.1em;
     width: 3em;
+    padding: 0.1em;
 }
 
 /* Уберём зависающее jquery-ui выделение */

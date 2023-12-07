@@ -31,14 +31,23 @@ try {
     $filter = [];
     parse_str($_POST['filter'], $filter);
 
+    file_put_contents('parsed.log', print_r($filter, true));
+
     // Проверяем наличие сортировки.
     $sorting = Validate::sortFilter($filter);
+
 
     // Получаем настройки.
     $cfg = get_settings();
 
     // Собираем фабрику.
-    $ruleFactory = new Factory($cfg, new Output($cfg, $cfg['forum_address'] ?? ''));
+    $ruleFactory = new Factory(
+        $cfg,
+        new TopicPattern(
+            $cfg,
+            $cfg['forum_address'] ?? '',
+        )
+    );
 
     //  0 - из других подразделов
     // -1 - незарегистрированные

@@ -290,7 +290,7 @@ function cfg_checkbox($cfg): Closure
                         </div>
                     </div>
                     <form method="post" id="topics_filter">
-                        <div class="topics_filter">
+                        <div class="topics_filter" style="display: flex">
                             <div class="filter_block ui-widget">
                                 <fieldset class="filter-client-status" title="Статус раздач в торрент-клиенте">
                                     <label>
@@ -576,6 +576,21 @@ function cfg_checkbox($cfg): Closure
                                     </label>
                                 </fieldset>
                             </div>
+
+
+                            <div class="filter_block filter_rule ui-widget" style="align-self: flex-end">
+                                <div class="topics_result_columns_controlgroup">
+                                    <input type="checkbox" name="topics_result_columns[]" id="topics_result_columns_id" value="topic_id" >
+                                    <label for="topics_result_columns_id">номер раздачи</label>
+
+                                    <input type="checkbox" name="topics_result_columns[]" id="topics_result_columns_au" value="author">
+                                    <label for="topics_result_columns_au">автор</label>
+
+                                    <input type="checkbox" name="topics_result_columns[]" id="topics_result_columns_cl" value="client" checked="checked" class="default">
+                                    <label for="topics_result_columns_cl">клиент</label>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                     <div class="process-bar"></div>

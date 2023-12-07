@@ -95,6 +95,14 @@ $(document).ready(function () {
         }
     });
 
+    // Инициализация кнопок выбора выводимых сведений.
+    $('.topics_result_columns_controlgroup').controlgroup({
+        direction: "vertical",
+        classes: {
+            'ui-controlgroup': 'hide-dot columns'
+        }
+    });
+
     // Инициализация кнопок с дополнительным меню.
     $("div.control-group").controlgroup();
 
